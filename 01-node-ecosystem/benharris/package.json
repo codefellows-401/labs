@@ -1,0 +1,20 @@
+{
+  "name": "01-node-ecosystem",
+  "version": "1.0.0",
+  "description": "01-node-ecosystem",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "faker": "^4.1.0",
+    "jest": "^23.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": []
+}

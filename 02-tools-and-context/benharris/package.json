@@ -1,0 +1,16 @@
+{
+  "name": "benharris",
+  "version": "1.0.0",
+  "description": "n/a -- have not covered this in class yet",
+  "main": "list.js",
+  "scripts": {
+    "test": "jest --coverage --verbose",
+    "watch": "jest --coverage --verbose --watchAll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
