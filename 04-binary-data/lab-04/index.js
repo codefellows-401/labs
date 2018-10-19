@@ -7,7 +7,7 @@
 // Modules
 const fs = require('fs');
 
-// CLI ARGV
+// File Handling
 const [file, operation] = process.argv.slice(2);
 
 
@@ -21,7 +21,12 @@ function Bitmap(filePath) {
 
 // Prototype Method • Parser
 Bitmap.prototype.parse = function(buffer) {
-  this.type = buffer.toString('utf-8', 0, 2);
+  this.buffer         = buffer;                         // Buffer
+  this.type           = buffer.toString('utf-8', 0, 2); // Type
+  this.fileSize       = buffer.readInt32LE(2);          // Filesize
+  this.bytesPerPixel  = buffer.readInt16LE(28);         // Bytes per pixel
+  this.height         = buffer.readInt32LE(22);         // Height
+  this.width          = buffer.readInt32LE(18);         // Width
 };
 
 // Prototype Method • Transform Bitmap
@@ -35,38 +40,36 @@ let bitmap = new Bitmap(file);
 
 
 //-------------------------------------
-//* Image Transformations Module
+//* Transform Module
 //-------------------------------------
-// Object • Transformation Dictionary -- each property represents a transformation that someone could enter on the command line and then a function that would be called on the bitmap to do this job
+// Object • Transform Dictionary 
 const transforms = {
   greyscale: transformGreyscale
 };
 
-// Function • Transform Greyscale -- called by Bitmap.transform('greyscale')
+// Function • Transform to Greyscale
 const transformGreyscale = (bmp) => {
   console.log('Transforming bitmap into greyscale', bmp);
 };
 
 // Function • Transform With Callbacks
-function transformWithCallbacks() {
+function transformWithCallbacks() {     // <-- module.exports goes HERE
   fs.readFile(file, (err, buffer) => {
-    if (err) {
-      throw err;
-    }
+    // Error handling
+    if (err) throw err;
 
     // Retrive buffer
     bitmap.parse(buffer);
-    bitmap.transform(operation);
+    bitmap.transform(operation); // <-- pass transformation functions HERE
+
+    // Output modified buffer
     fs.writeFile(bitmap.newFile, bitmap.buffer, (err, out) => {
-      if (err) {
-        throw err;
-      }
+      if (err) throw err;
       console.log(`Bitmap Transformed: ${bitmap.newFile}`);
     });
 
   });
 }
-
 
 //-------------------------------------
 //* Execution
