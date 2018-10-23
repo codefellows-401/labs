@@ -1,7 +1,13 @@
+//-------------------------------------
+//* Client Setup
+//-------------------------------------
+// Safety Goggles ON
 'use strict';
 
+// Dependencies
 const uuid = require('uuid/v4');
 
+// User Class
 class User {
   constructor(socket) {
     let id = uuid();
@@ -11,4 +17,5 @@ class User {
   }  
 }
 
+// Export User Class
 module.exports = User;

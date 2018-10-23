@@ -20,6 +20,7 @@ The following app is a TCP chatroom. Clients are able to connect to the chatroom
 - iTerm2 (optional)
 
 **Packages**
+- dotenv
 - get-ip
 - jest
 - uuid
