@@ -1,6 +1,15 @@
-const List = require('../list.js');
+//--------------------------------------
+//* Setup
+//--------------------------------------
+const List = require('../src/list.js');
 const newList = new List('Ben');
 
+// Dependencies
+// None
+
+//--------------------------------------
+//* Testing
+//--------------------------------------
 // TODO: REVIEW 9:30-10:00 on YOUTUBE (2018-10-17)
 //* REQUIRED METHODS
 describe('listHello() will...', () => {
@@ -75,7 +84,9 @@ xdescribe('listReduce() will...', () => {
   });
 });
 
-//* STRETGH GOALS
+//--------------------------------------
+//* Strech Goal Test Suite
+//--------------------------------------
 xdescribe('listForEach() will...', () => {
   it('execute a provided function once for each array element.', () => {
     const input  = List.listForEach();
