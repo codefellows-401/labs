@@ -1,5 +1,14 @@
+//--------------------------------------
+//* Setup
+//--------------------------------------
 'use strict';
 
+// Dependencies
+// None
+
+//--------------------------------------
+//* Setup
+//--------------------------------------
 class List {
   // Class Constructor
   constructor(name) {
@@ -8,7 +17,7 @@ class List {
   }
 
   //! Basic Functions //
-  //* REFERENCE: hello()
+  //* REFERENCE: hello()jest 
   listHello() {
     return `Hi! I'm ${this.name} from CodeFellows.`;
   }
@@ -68,17 +77,22 @@ class List {
   // .splice()
 }
 
+//--------------------------------------
 //* Test Variables
+//--------------------------------------
 let myName = 'Ben';
 let testArr = [1,2,3,4,5];
 let testStr = 'I am Ten!!';
 let testNum = 7;
 let newList = new List(myName);
 
-//* Method Tests
-// newList.listHello();
+newList.listHello();
 // newList.listLength(testStr);
-newList.listPush(testArr);
+// newList.listPush(testArr);
 
-//* Module Export
-module.exports = List;
+//--------------------------------------
+//* Module Exports
+//--------------------------------------
+module.exports = {
+  List: List,
+};
