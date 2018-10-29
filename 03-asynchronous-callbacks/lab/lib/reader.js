@@ -1,24 +1,37 @@
-//* SAFETY GOGGLES ON
+//-------------------------------------
+//* Setup
+//-------------------------------------
+// Safety Goggles ON
 'use strict';
 
-//* MODULES
+// Dependencies
 const fs = require('fs');
 
-//* TEST VARIABLES
-const file1 = ('../data/eenie.txt');
-const file2 = ('../data/meenie.txt');
-const file3 = ('../data/moe.txt');
-const outFile =  ('../data/output.txt');
-const files = [file1, file2, file3];
+//-------------------------------------
+//* Filesystem Function
+//-------------------------------------
+function reader(files) {
+  // Validate input
+  if(files.isArray) throw 'ERROR: Function argument must be an array.\n';
+  if(files.length > 3 || files.length < 3) throw 'ERROR: Function requires an array of three values.\n';
+  console.log('Processing files...');
 
-// TODO: Write Lab COde
-module.exports = function reader(files) {
-  // REFERENCE: https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback
+  // Read input
   fs.readFile(files, (err, buffer) => {
     if(err) throw err;
-    fs.writeFile(outFile, buffer, (err) => {
-      if(err) throw err;
-      console.log('done');
-    });
+
+    // Process each file
+    for(let myFile = 0; myFile < files.length; myFile++) {
+      fs.writeFile(myFile, buffer, (err) => {
+        if(err) throw err;
+        console.log('done');
+      });
+    }
   });
-};
+}
+
+
+//-------------------------------------
+//* Module Exports
+//-------------------------------------
+module.exports = reader();
