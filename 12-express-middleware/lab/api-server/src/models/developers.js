@@ -43,4 +43,4 @@ class Developer {
 
 }
 
-export default People;
+export default Developer;
