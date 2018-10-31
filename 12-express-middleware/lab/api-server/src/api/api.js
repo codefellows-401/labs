@@ -1,24 +1,23 @@
+//-------------------------------------
+//* Setup
+//-------------------------------------
+// Safety Googles ON
 'use strict';
 
+// Dependencies
 const debug = require('debug')('api');
 
+// Express Routter
 import express from 'express';
-
-// The express router replaces our home-built custom router
 const router = express.Router();
 
-// modelFinder middleware reads :model in the URLs and susses out the right model to use.
-// As you'll see, it gets jacked on to req.model so that you can reference it in your routes
+// modelFinder
 import modelFinder from '../middleware/models.js';
 router.param('model', modelFinder);
 
-/**
- * Render all records of a model
- * Note the error handling ....
- * Typically, you can just throw an error and your error handling middleware will run
- * In a promise, that doesn't work, but if you call next() with any params, Express
- * sees that as an error (the presence of a param) and calls your error middleware...
- */
+//-------------------------------------
+//* Router
+//-------------------------------------
 router.get('/api/v1/:model', (req,res,next) => {
   debug('get all');
   req.model.fetchAll()
@@ -39,14 +38,6 @@ router.post('/api/v1/:model', (req,res,next) => {
     .catch(next);
 });
 
-/**
- * Simple method to send a JSON response (all of the API methods will use this)
- * This could be done as middleware if you were to configure each route with it
- * and set something like the "data" object onto the response object, then that
- * middleware could read that and spit it out.  Food for thought.
- * @param res
- * @param data
- */
 let sendJSON = (res,data) => {
   res.statusCode = 200;
   res.statusMessage = 'OK';
@@ -55,5 +46,7 @@ let sendJSON = (res,data) => {
   res.end();
 };
 
-
+//-------------------------------------
+//* Export Router
+//-------------------------------------
 export default router;
