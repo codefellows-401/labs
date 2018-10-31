@@ -1,5 +1,12 @@
+//-------------------------------------
+//* Setup
+//-------------------------------------
+// Safety Googles ON
 'use strict';
 
+//-------------------------------------
+//* 404 Controller
+//-------------------------------------
 export default (req,res,next) => {
   let error = { error:'Resource Not Found' };
   res.statusCode = 404;
