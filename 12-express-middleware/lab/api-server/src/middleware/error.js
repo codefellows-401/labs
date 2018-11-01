@@ -1,5 +1,12 @@
+//-------------------------------------
+//* Setup
+//-------------------------------------
+// Safety Googles ON
 'use strict';
 
+//-------------------------------------
+//* 500 Server Error Controller
+//-------------------------------------
 export default  (err,req,res,next) => {
   console.error(err);
 
