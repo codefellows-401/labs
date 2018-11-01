@@ -5,14 +5,14 @@
 'use strict';
 
 // Dependencies
-import {startDB, stopDB} from '../../../src/supergoose.js';
+import {startDB, stopDB} from '../../../src/supergoose.js'; // <-- necessary to start/stop MongoDB for testing
 import Games from '../../../src/models/Games';
 
 // Jest Hooks
 beforeAll(startDB);
 afterAll(stopDB);
-afterEach(async () => {
-  // clear collection for pristine testing conditions
+beforeEach(async () => {
+  // clear the collection for pristine testing conditions prior to each test
   await Games.deleteMany({});
 });
 
