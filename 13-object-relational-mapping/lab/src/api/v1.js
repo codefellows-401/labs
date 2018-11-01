@@ -25,10 +25,9 @@ let sendJSON = (data,response) => {
 //-------------------------------------
 router.get('/api/v1/Games', (request,response,next) => {
   const criteria = {key:'???'}; // TODO
-  Games.find(criterial)
+  Games.find(criteria)
     .then( data => {
-      // TODO
-      const output = {key:'???'}; 
+      const output = {key:'???'}; // TODO
       sendJSON(output, response);
     })
     .catch( next );
@@ -36,33 +35,33 @@ router.get('/api/v1/Games', (request,response,next) => {
 
 router.get('/api/v1/Games/:id', (request,response,next) => {
   const criteria = {key:'???'}; // TODO
-  Games.find()
+  Games.find(criteria) // req.params.id
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
 router.post('/api/v1/Games', (request,response,next) => {
-  const body = '???';
+  const body = '???'; // TODO
   Games.create(body)
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
 router.put('/api/v1/Games/:id', (request,response,next) => {
-  request.body._id = '???';
+  request.body._id = '???'; // TODO
   Games.findByIdAndUpdate(request.params.id, request.body)
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
 router.patch('/api/v1/Games/:id', (request,response,next) => {
-  Games.findByIdAndUpdate('???', '???')
+  Games.findByIdAndUpdate('???', '???') // TODO
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
 router.delete('/api/v1/Games/:id', (request,response,next) => {
-  Games.findByIdAndRemove('???')
+  Games.findByIdAndRemove('???') // TODO
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
