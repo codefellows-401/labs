@@ -7,6 +7,8 @@
 // Dependencies
 import {startDB, stopDB} from '../../../src/supergoose.js'; // <-- necessary to start/stop MongoDB for testing
 import Games from '../../../src/models/Games';
+import { STATES } from 'mongoose';
+import { checkServerIdentity } from 'tls';
 
 // Jest Hooks
 beforeAll(startDB);
@@ -56,6 +58,24 @@ describe('Games Model', () => {
         expect(error).toBeFalsy();
       }
     });
-
   });
 });
+
+// Example from class
+/*
+describe('Games Model', () => {
+  it('should get all cities in Washington where cities are populated', async () => {
+    const wa = await State.create({ name: 'Washington' });
+    await City.create({ name: 'Seattle', state: wa._id });
+    await City.create({ name: 'Bothell', state: wa._id });
+    const id = wa._id;
+
+    ? now API route simulation begins /state/:id
+    const state = await State.findOne({_id : id});
+    const citiesInState = await City.find({state : id});
+    states.cities = citiesInState;
+    expect(state.cities[0].name).toBe('Seattle');
+    expect(state.cities[1].name).toBe('Bothell');
+  });
+});
+*/
