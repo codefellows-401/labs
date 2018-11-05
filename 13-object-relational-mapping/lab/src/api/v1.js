@@ -6,7 +6,7 @@
 
 // Dependencies
 import express from 'express';
-import Games from '../models/Games.js';
+import Game from '../models/games.js';
 
 // Router Setup
 const router = express.Router();
@@ -23,9 +23,9 @@ let sendJSON = (data,response) => {
 //-------------------------------------
 //* Router
 //-------------------------------------
-router.get('/api/v1/Games', (request,response,next) => {
+router.get('/api/v1/game', (request,response,next) => {
   const criteria = {key:'???'}; // TODO
-  Games.find(criteria)
+  Game.find(criteria)
     .then( data => {
       const output = {key:'???'}; // TODO
       sendJSON(output, response);
@@ -33,35 +33,35 @@ router.get('/api/v1/Games', (request,response,next) => {
     .catch( next );
 });
 
-router.get('/api/v1/Games/:id', (request,response,next) => {
+router.get('/api/v1/game/:id', (request,response,next) => {
   const criteria = {key:'???'}; // TODO
-  Games.find(criteria) // req.params.id
+  Game.find(criteria) // req.params.id
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
-router.post('/api/v1/Games', (request,response,next) => {
+router.post('/api/v1/game', (request,response,next) => {
   const body = '???'; // TODO
-  Games.create(body)
+  Game.create(body)
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
-router.put('/api/v1/Games/:id', (request,response,next) => {
+router.put('/api/v1/game/:id', (request,response,next) => {
   request.body._id = '???'; // TODO
-  Games.findByIdAndUpdate(request.params.id, request.body)
+  Game.findByIdAndUpdate(request.params.id, request.body)
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
-router.patch('/api/v1/Games/:id', (request,response,next) => {
-  Games.findByIdAndUpdate('???', '???') // TODO
+router.patch('/api/v1/game/:id', (request,response,next) => {
+  Game.findByIdAndUpdate('???', '???') // TODO
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
-router.delete('/api/v1/Games/:id', (request,response,next) => {
-  Games.findByIdAndRemove('???') // TODO
+router.delete('/api/v1/game/:id', (request,response,next) => {
+  Game.findByIdAndRemove('???') // TODO
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
