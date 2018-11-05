@@ -1,19 +1,18 @@
+//-------------------------------------
+//* Setup
+//-------------------------------------
+// Safety Goggles ON
 'use strict';
 
+// Dependencies
 import mongoose from 'mongoose';
 
-// define your schema
-const gameSchema = mongoose.Schema ({
-  title: { type:String, required:true },
-  publisher: { type:String, required:true},
-  year: { type:Date, required:true }, // TODO: Check DATE structure
-  players: { type:String, required:false, enum:['1','1-2','2']},
+// Schema
+const gameSchema = new mongoose.Schema ({
+  title:    { type:String, required:true },
+  platform: { type:String, required:true },
+  year:     { type:Number, required:true },
 });
 
-export default mongoose.model('games', gameSchema);
-
-// create your model
-// TODO
-
-// export your model
-// TODO
+// Create/Export Model
+export default mongoose.model('Game', gameSchema);
