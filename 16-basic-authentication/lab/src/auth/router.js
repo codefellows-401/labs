@@ -2,13 +2,14 @@ import express from 'express';
 import User from './model.js';
 import auth from './middleware.js';
 
-const router = express.Router();
+// TODO: YouTube 11/6 at 10:00 a.m.
+const authRouter = express.Router();
 
-router.get('/signin', auth, (request, response) => {
+authRouter.get('/signin', auth, (request, response) => {
   response.send('where can the token be?');
 });
 
-router.post('/signup', async (request, response) => {
+authRouter.post('/signup', async (request, response) => {
 
   try {
 
