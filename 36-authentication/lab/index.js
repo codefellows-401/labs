@@ -14,8 +14,8 @@ require('babel-register');
 // Start DB Server
 const mongoose = require('mongoose');
 const options = {
-  useNewUrlParser:true,
-  useCreateIndex: true
+  useNewUrlParser: true,
+  useCreateIndex: true,
 };
 mongoose.connect(process.env.MONGODB_URI, options);
 

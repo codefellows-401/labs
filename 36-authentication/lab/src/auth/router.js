@@ -13,6 +13,10 @@ import oauth from './lib/oauth.js';
 //------------------------------
 //* Routes
 //------------------------------
+authRouter.get('/', (req, res, next) => {
+  res.render('../public/index.html');
+});
+
 // These routes should support a redirect instead of just spitting out the token ...
 authRouter.post('/signup', (req, res, next) => {
   let user = new User(req.body);
